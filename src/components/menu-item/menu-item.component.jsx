@@ -2,20 +2,18 @@ import React from 'react';
 
 import {
 	MenuItemStyled,
+	MenuItemBackgroundImage,
 	MenuItemContent,
 	MenuItemTitle,
 	MenuItemSubtitle
 } from './menu-item.styles';
 
-const MenuItem = () => (
-	<MenuItemStyled>
+const MenuItem = ({ title, imageUrl, size }) => (
+	<MenuItemStyled size={ size } >
+		<MenuItemBackgroundImage style={{ backgroundImage: `url(${ imageUrl })` }} />
 		<MenuItemContent>
-			<MenuItemTitle>
-				Menu item title
-			</MenuItemTitle>
-			<MenuItemSubtitle>
-				Menu item sub title
-			</MenuItemSubtitle>
+			<MenuItemTitle>{ title }</MenuItemTitle>
+			<MenuItemSubtitle>Shop now</MenuItemSubtitle>
 		</MenuItemContent>
 	</MenuItemStyled>
 );
