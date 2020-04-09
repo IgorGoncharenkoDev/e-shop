@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 
 import MenuItem from '../menu-item/menu-item.component';
 
-import { shopData } from '../../data/data';
+import SHOP_DATA from '../../data/data';
 
 import { DirectoryStyled } from './directory.styles';
 
@@ -10,7 +10,7 @@ const Directory = () => {
 	const [shopItems, setShopItems] = useState([]);
 
 	useEffect(() => {
-		setShopItems(shopData);
+		setShopItems(SHOP_DATA);
 	}, [])
 
 	return (
