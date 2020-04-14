@@ -25,12 +25,8 @@ export const Label = styled.label`
   top: 10px;
   transition: 300ms ease all;
   
-  ${ ({ floatingLabel, labelShrinked }) => floatingLabel && labelShrinked && css`
+  ${ ({ labelShrinked }) => labelShrinked && css`
 		${ shrinkLabel }
-	` }
-  
-  ${ ({ floatingLabel }) => !floatingLabel && css`
-		top: -24px;
 	` }
 `;
 
@@ -71,7 +67,14 @@ export const Textarea = styled.textarea`
 	border: none;
   border-bottom: 1px solid grey;
   
+  ${ ({ element }) => element === 'textarea' && css`
+		& ~ ${ Label } {
+			top: 2px;
+		}
+	` }
+  
   &:focus ~ ${ Label } {
+		top: -24px;
     font-size: 12px;
     color: black;
   }

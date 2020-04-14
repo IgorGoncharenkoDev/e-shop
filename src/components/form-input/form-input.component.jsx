@@ -7,7 +7,7 @@ import {
 	Textarea
 } from './form-input.styles';
 
-const FormField = ({ element = 'input', id, value, handleChange, label, floatingLabel, ...otherInputProps }) => (
+const FormField = ({ element = 'input', id, value, handleChange, label, ...otherInputProps }) => (
 	<FormGroup element={ element }>
 		{
 			element === 'input' && (
@@ -22,7 +22,11 @@ const FormField = ({ element = 'input', id, value, handleChange, label, floating
 		{
 			element === 'textarea' && (
 				<Textarea
+					element={ element }
 					rows={ 3 }
+					value={ value }
+					onChange={ handleChange }
+					{ ...otherInputProps }
 				/>
 			)
 		}
@@ -30,8 +34,7 @@ const FormField = ({ element = 'input', id, value, handleChange, label, floating
 		{
 			label && (<Label
 					forHtml={ id }
-					floatingLabel={ floatingLabel }
-					labelShrinked={ !!value.length && floatingLabel }
+					labelShrinked={ !!value.length }
 				>
 					{ label }
 				</Label>

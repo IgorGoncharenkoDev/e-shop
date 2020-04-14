@@ -38,19 +38,18 @@ const SignIn = () => {
 			<SubTitle>Sign in with your email and password</SubTitle>
 
 			<form onSubmit={ handleSubmit }>
-				<FormField
-					element="input"
-					type="email"
-					name="email"
-					id="email"
-					value={ email }
-					label="Email"
-					floatingLabel={ true }
-					labelShrinked={ false }
-					required
-					handleChange={ handleChange }
-					validators={[]}
-				/>
+				{/*<FormField*/}
+				{/*	element="input"*/}
+				{/*	type="email"*/}
+				{/*	name="email"*/}
+				{/*	id="email"*/}
+				{/*	value={ email }*/}
+				{/*	label="Email"*/}
+				{/*	labelShrinked={ false }*/}
+				{/*	required*/}
+				{/*	handleChange={ handleChange }*/}
+				{/*	validators={[]}*/}
+				{/*/>*/}
 				<FormField
 					element="input"
 					type="password"
@@ -58,7 +57,6 @@ const SignIn = () => {
 					id="password"
 					value={ password }
 					label="Password"
-					floatingLabel={ true }
 					labelShrinked={ false }
 					required
 					handleChange={ handleChange }
@@ -66,11 +64,15 @@ const SignIn = () => {
 				/>
 				<FormField
 					element="textarea"
+					// id="description"
+					id="email"
+					name="email"
 					label="Description"
-					floatingLabel={ false }
 					labelShrinked={ false }
-					value=""
+					value={ email }
+					handleChange={ handleChange }
 				/>
+
 				<CustomButton
 					type="submit"
 					primary
