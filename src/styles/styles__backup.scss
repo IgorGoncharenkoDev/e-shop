@@ -1,0 +1,550 @@
+@import './helpers/animate-css';
+
+.d-none {
+  display: none;
+}
+
+img {
+  max-width: 100%;
+}
+
+.mx-auto {
+  margin-left: auto !important;
+  margin-right: auto !important;
+}
+
+// timer
+// id: #timer_choose_protein_01c484
+// class: .legacyTimer
+.legacyTimer {
+  top: 0 !important;
+  width: 100% !important;
+  height: 12.75px !important;
+
+  .legacyStripTimer_main {
+    padding: 0;
+    background: transparentize(#000, .75);
+  }
+
+  .legacyStripTimer_container {
+    border: none;
+  }
+
+  .legacyStripTimer_bar {
+    background: #FFC220 !important;
+  }
+
+  .legacyStripTimer_hit {
+
+  }
+}
+
+
+// Button animation timing base
+$button-animation-timing-base: 1000ms;
+$zoom-out-timing-base: 1000ms;
+
+
+$button-zoom-in-duration: $button-animation-timing-base * .9;
+$button-text-zoom-in-duration: $button-animation-timing-base * .5;
+$button-zoom-out-duration: $zoom-out-timing-base  * 1.9;
+$button-text-zoom-out-duration: $button-animation-timing-base * 1.2;
+
+$button-zoom-in-animation-delay: 1000ms * .25;
+$button-zoom-out-animation-delay: $zoom-out-timing-base + ($button-animation-timing-base * .1);
+
+// Play button
+// class:
+//    .play-btn
+//    default: .legacyButton legacyButtonDisabled
+.play-btn {
+  $width: 169.5px;
+  $height: 54px;
+
+  // for testing only
+  //top: 319px !important;
+  //left: 342px !important;
+  // EOL: for testing only
+
+  width: auto !important;
+  height: auto !important;
+  padding: 0;
+  transform-origin: 50% 50% !important;
+  -webkit-font-smoothing: subpixel-antialiased;
+  backface-visibility: hidden;
+
+  &.zoomIn,
+  &.zoomOut {
+    animation-timing-function: ease-in-out;
+  }
+
+  &.zoomIn {
+    animation-duration: $button-zoom-in-duration;
+  }
+
+  &.zoomOut {
+    animation-duration: $button-zoom-out-duration;
+  }
+
+  filter: blur(0);
+  will-change: transform;
+
+  button {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: $width;
+    height: $height;
+    //opacity: .5;
+    padding: 0;
+    line-height: 56px;
+    font-family: 'BogleWeb-Regular', sans-serif;
+    font-size: 20px;
+    font-style: normal;
+    font-weight: bold;
+    text-align: center;
+    white-space: normal;
+    color: #fff;
+    background: #0071CE;
+    //background: red;
+    border-radius: 20px 8px;
+    border: none;
+    cursor: pointer;
+    -webkit-font-smoothing: subpixel-antialiased;
+    backface-visibility: hidden;
+    filter: blur(0);
+    will-change: transform;
+    transform-origin: 100% 0;
+
+    span {
+      @extend .animated;
+      animation-timing-function: ease-in-out;
+      -webkit-font-smoothing: subpixel-antialiased;
+      backface-visibility: hidden;
+      filter: blur(0);
+      will-change: transform;
+      transform-origin: 100% 0;
+    }
+  }
+
+  &.zoomIn {
+    span {
+      @extend .zoomIn;
+      animation-duration: $button-text-zoom-in-duration;
+    }
+  }
+
+  &.zoomOut {
+    animation-delay: $button-zoom-out-animation-delay;
+
+    span {
+      @extend .zoomOut;
+      animation-duration: $button-text-zoom-out-duration;
+      animation-delay: $button-zoom-out-animation-delay;
+    }
+  }
+}
+
+
+// Ingredient button
+.ingredient-btn {
+  $width: 210px;
+  $height: 79px;
+
+  // for testing only
+  //top: 317px !important;
+  //left: 65px !important;
+  // EOL: for testing only
+
+  width: auto !important;
+  height: auto !important;
+  padding: 0;
+  transform-origin: 50% 50% !important;
+
+  &.zoomIn,
+  &.zoomOut {
+    animation-timing-function: ease-in-out;
+  }
+
+  &.zoomIn {
+    animation-duration: $button-zoom-in-duration;
+  }
+
+  &.zoomOut {
+    animation-duration: $button-zoom-out-duration;
+  }
+
+  button {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: $width;
+    height: $height;
+    //opacity: .5;
+    padding: 0;
+    line-height: 1.3;
+    font-family: 'BogleWeb-Regular', sans-serif;
+    font-size: 20px;
+    font-style: normal;
+    font-weight: bold;
+    text-align: center;
+    white-space: normal;
+    color: #fff;
+    background: #0071CE;
+    //background: red;
+    border-radius: 20px 8px;
+    border: none;
+    cursor: pointer;
+
+    span {
+      @extend .animated;
+    }
+
+    span {
+      animation-timing-function: ease-in-out;
+    }
+  }
+
+  &.zoomIn {
+    span {
+      @extend .zoomIn;
+      animation-duration: $button-text-zoom-in-duration;
+    }
+  }
+
+  &.zoomOut {
+    animation-delay: $button-zoom-out-animation-delay;
+
+    span {
+      @extend .zoomOut;
+      animation-duration: $button-text-zoom-out-duration;
+      animation-delay: $button-zoom-out-animation-delay;
+    }
+  }
+}
+
+.swap-btn {
+  $width: 220px;
+  $height: 54px;
+
+  // for testing only
+  //top: 286px !important;
+  //left: 570px !important;
+  // EOL: for testing only
+
+  width: auto !important;
+  height: auto !important;
+  padding: 0;
+  transform-origin: 50% 50% !important;
+
+  &.zoomIn,
+  &.zoomOut {
+    animation-timing-function: ease-in-out;
+  }
+
+  &.zoomIn {
+    animation-duration: $button-zoom-in-duration;
+  }
+
+  &.zoomOut {
+    animation-duration: $button-zoom-out-duration;
+  }
+
+  button {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-width: 170px;
+    min-height: $height;
+    //opacity: .5;
+    padding: 0;
+    line-height: 1.4;
+    font-family: 'BogleWeb-Regular', sans-serif;
+    font-size: 19px;
+    font-style: normal;
+    font-weight: bold;
+    text-align: center;
+    white-space: normal;
+    color: #fff;
+    background: #0071CE;
+    //background: red;
+    border-radius: 20px 8px;
+    border: none;
+    cursor: pointer;
+
+    span {
+      @extend .animated;
+    }
+
+    span {
+      animation-timing-function: ease-in-out;
+    }
+  }
+
+  &.zoomIn {
+    span {
+      @extend .zoomIn;
+      animation-duration: $button-text-zoom-in-duration;
+    }
+  }
+
+  &.zoomOut {
+    animation-delay: $button-zoom-out-animation-delay;
+
+    span {
+      @extend .zoomOut;
+      animation-duration: $button-text-zoom-out-duration;
+      animation-delay: $button-zoom-out-animation-delay;
+    }
+  }
+}
+
+.share-btn {
+  $width: 224px;
+  $height: 54px;
+
+  // for testing only
+  //top: 286px !important;
+  //left: 570px !important;
+  // EOL: for testing only
+
+  width: auto !important;
+  height: auto !important;
+  padding: 0;
+  transform-origin: 50% 50% !important;
+
+  &.zoomIn,
+  &.zoomOut {
+    animation-timing-function: ease-in-out;
+  }
+
+  &.zoomIn {
+    animation-duration: $button-zoom-in-duration;
+  }
+
+  &.zoomOut {
+    animation-duration: $button-zoom-out-duration;
+  }
+
+  button {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: $width;
+    height: $height;
+    //opacity: .5;
+    padding: 0;
+    line-height: 56px;
+    font-family: 'BogleWeb-Regular', sans-serif;
+    font-size: 19px;
+    font-style: normal;
+    font-weight: bold;
+    text-align: center;
+    white-space: normal;
+    color: #000;
+    background: #FFC220;
+    //background: red;
+    border-radius: 20px 8px;
+    border: none;
+    cursor: pointer;
+
+    span {
+      @extend .animated;
+    }
+
+    span {
+      animation-timing-function: ease-in-out;
+    }
+  }
+
+  &.zoomIn {
+    span {
+      @extend .zoomIn;
+      animation-duration: $button-text-zoom-in-duration;
+    }
+  }
+
+  &.zoomOut {
+    animation-delay: $button-zoom-out-animation-delay;
+
+    span {
+      @extend .zoomOut;
+      animation-duration: $button-text-zoom-out-duration;
+      animation-delay: $button-zoom-out-animation-delay;
+    }
+  }
+}
+
+.start-over-btn {
+  //outline: 1px solid red;
+  top: 47px;
+  right: 43px;
+  background-color: transparent;
+  border: none;
+  position: absolute;
+  display: flex;
+  align-items: center;
+  padding: 8px;
+  color: #fff;
+  font-family: 'BogleWeb-Regular', sans-serif;
+  font-size: 19px;
+  font-style: normal;
+  font-weight: bold;
+  text-align: center;
+  white-space: normal;
+  cursor: pointer;
+
+  img {
+    width: 20px;
+    margin-right: 13px;
+  }
+}
+
+.back-btn {
+  padding: 8px;
+  border: none;
+  background-color: transparent;
+  cursor: pointer;
+
+  img {
+    width: 20px;
+  }
+}
+
+// Zoom in effect
+@keyframes zoomIn {
+  from {
+    opacity: 0;
+    -webkit-transform: scale(0.3, 0.3);
+    transform: scale(0.3, 0.3);
+  }
+
+  50% {
+    opacity: 1;
+  }
+}
+
+.zoomIn {
+  -webkit-animation-name: zoomIn;
+  animation-name: zoomIn;
+  -webkit-font-smoothing: subpixel-antialiased;
+  backface-visibility: hidden;
+}
+
+// Zoom out effect
+@keyframes zoomOut {
+  from {
+    opacity: 1;
+  }
+
+  50% {
+    opacity: 0;
+    transform: perspective(1px) scale(0.3, 0.3);
+  }
+
+  to {
+    opacity: 0;
+  }
+}
+
+.zoomOut {
+  -webkit-animation-name: zoomOut;
+  animation-name: zoomOut;
+  -webkit-font-smoothing: subpixel-antialiased;
+  backface-visibility: hidden;
+}
+
+
+.blue-screen {
+  .top-section {
+    position: absolute;
+    top: 111px;
+    left: 50%;
+    transform: translate(-50%, 0);
+    //outline: 1px solid red;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .walmart-logo {
+    align-self: center;
+    width: 120px;
+  }
+
+  .regular-text {
+    margin-top: 19px;
+    line-height: 1.6;
+  }
+
+  .bottom-section {
+    position: absolute;
+    top: 270px;
+    left: 50%;
+    transform: translate(-50%, 0);
+    display: flex;
+    width: 570px;
+    //outline: 1px solid red;
+
+    > * {
+      flex-shrink: 0;
+    }
+
+    .form-group {
+    }
+
+    .form-control {
+      height: 54px;
+      margin-right: 15px;
+      width: 256px;
+      padding: 0 23px;
+      font-size: 20px;
+      border: none;
+      border-radius: 6px;
+      background-color: #fff;
+
+      &::-webkit-input-placeholder { /* Chrome/Opera/Safari */
+      font-size: 20px;
+        color: transparentize(#041F41, .5);
+      }
+      &::-moz-placeholder { /* Firefox 19+ */
+      font-size: 20px;
+        color: transparentize(#041F41, .5);
+      }
+      &:-ms-input-placeholder { /* IE 10+ */
+      font-size: 20px;
+        color: transparentize(#041F41, .5);
+      }
+      &:-moz-placeholder { /* Firefox 18- */
+      font-size: 20px;
+        color: transparentize(#041F41, .5);
+      }
+    }
+
+    .btn-submit {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      width: 253px;
+      height: 54px;
+      font-size: 21px;
+      border: none;
+      border-radius: 6px;
+      background-color: #FFC220;
+      cursor: pointer;
+    }
+  }
+}
+
+
+// text content
+.regular-text {
+  line-height: 1.6;
+  font-size: 20px;
+  color: #fff;
+  text-align: center;
+  white-space: nowrap;
+
+  p {
+    margin: 0;
+  }
+}
