@@ -6,27 +6,27 @@ const shrinkLabel = css`
   color: black;
 `;
 
-export const FormGroup = styled.div`
-  position: relative;
-  margin: 45px 0;
-  
-  ${ ({ element }) => element === 'textarea' && css`
-		margin-top: 65px;
-	` }
-`;
-
 export const Label = styled.label`
   color: grey;
   font-size: 16px;
   font-weight: normal;
   position: absolute;
-  //pointer-events: none;
+  pointer-events: none;
   left: 5px;
   top: 10px;
   transition: 300ms ease all;
   
   ${ ({ labelShrinked }) => labelShrinked && css`
 		${ shrinkLabel }
+	` }
+`;
+
+export const FormGroup = styled.div`
+  position: relative;
+  margin: 45px 0;
+  
+  ${ ({ element }) => element === 'textarea' && css`
+		margin-top: 65px;
 	` }
 `;
 
@@ -78,4 +78,14 @@ export const Textarea = styled.textarea`
     font-size: 12px;
     color: black;
   }
+`;
+
+export const FormControlError = styled.p`
+	position:absolute;
+	bottom: 0;
+	left: 5px;
+	transform: translate(0, 110%);
+	margin-bottom: 0;
+	font-size: .875rem;
+	color: red;
 `;

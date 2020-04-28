@@ -15,17 +15,24 @@ export const ButtonStyled = styled.button`
   font-weight: bolder;
   border: none;
   cursor: pointer;
-	
-	${ ({ primary }) => primary && css`
-		background-color: #000;
-		color: #fff;
-		cursor: pointer;
-		
+  
+  ${ ({ primary, disabled }) => primary && !disabled && css`
 		&:hover {
 			background-color: white;
 	    color: black;
 	    border: 1px solid black;
 		}
-	`
+	` }
+	
+	${ ({ primary }) => primary && css`
+		background-color: #000;
+		color: #fff;
+		cursor: pointer;
+	`};
+	
+	${ ({ disabled }) => disabled && css `
+		opacity: .5;
+		cursor: auto;
+	` }
 	}
 `;
