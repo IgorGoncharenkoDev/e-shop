@@ -3,6 +3,8 @@ import React, { useCallback, useReducer } from 'react';
 import FormField from '../form-input/form-field.component';
 import CustomButton from '../button/button.component';
 
+import { signInWithGoogle } from '../../firebase/firebase.utils';
+
 import { VALIDATOR_REQUIRE, VALIDATOR_EMAIL, VALIDATOR_MINLENGTH } from '../../utils/validators';
 
 import { SignInStyled, Title, SubTitle } from './sign-in.styles';
@@ -136,6 +138,8 @@ const SignIn = () => {
 					disabled={ !state.formIsValid }
 					// onClick={}
 				>Submit form</CustomButton>
+
+				<CustomButton onClick={ () => signInWithGoogle() }>Sign In with Google</CustomButton>
 			</form>
 		</SignInStyled>
 	)

@@ -9,10 +9,10 @@ import {
 	MenuItemSubtitle
 } from './menu-item.styles';
 
-const MenuItem = ({ title, imageUrl, size, linkUrl, history, match}) => (
+const MenuItem = ({ title, imageUrl, size, routeName, history, match}) => (
 	<MenuItemStyled
 		size={ size }
-		onClick={ () => history.push(`${ match.url }${ linkUrl }`) }
+		onClick={ () => history.push(`${ match.url }${ routeName }`) }
 	>
 		<MenuItemBackgroundImage style={{ backgroundImage: `url(${ imageUrl })` }} />
 		<MenuItemContent>
