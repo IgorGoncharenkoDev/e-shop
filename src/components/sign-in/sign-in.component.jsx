@@ -139,7 +139,10 @@ const SignIn = () => {
 					// onClick={}
 				>Submit form</CustomButton>
 
-				<CustomButton onClick={ () => signInWithGoogle() }>Sign In with Google</CustomButton>
+				<CustomButton
+					google
+					onClick={ () => signInWithGoogle() }
+				>Sign In with Google</CustomButton>
 			</form>
 		</SignInStyled>
 	)

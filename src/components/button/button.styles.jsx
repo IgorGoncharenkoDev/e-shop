@@ -13,14 +13,14 @@ export const ButtonStyled = styled.button`
   text-transform: uppercase;
   font-family: 'Open Sans Condensed', sans-serif;
   font-weight: bolder;
-  border: none;
+  border: 1px solid transparent;
   cursor: pointer;
   
   ${ ({ primary, disabled }) => primary && !disabled && css`
 		&:hover {
 			background-color: white;
 	    color: black;
-	    border: 1px solid black;
+	    border-color: black;
 		}
 	` }
 	
@@ -35,4 +35,13 @@ export const ButtonStyled = styled.button`
 		cursor: auto;
 	` }
 	}
+	
+	${ ({ google }) => google && css`
+		background-color: #3b5998;
+		border-color: #3b5998;
+		
+			&:hover {
+				background-color: #37538d;
+			}
+	` } 
 `;

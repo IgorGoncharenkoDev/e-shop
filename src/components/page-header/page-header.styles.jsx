@@ -1,4 +1,4 @@
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 import { Link } from 'react-router-dom';
 import { ReactComponent as Logo } from '../../assets/images/logo__crwn.svg';
 
@@ -29,5 +29,22 @@ export const Options = styled.div`
 `;
 
 export const LinkStyled = styled(Link)`
+	display: flex;
+	justify-content: center;
+	align-items: center;
 	padding: 10px 15px;
+	font-family: inherit;
+	font-size: inherit;
+	text-transform: uppercase;
+	cursor: pointer;
+	background-color: transparent;
+	border: none;
+	
+	&:focus {
+		outline: none;
+	}
+	
+	${ ({ registerButton }) => registerButton && css`
+		width: 82px;
+	` }
 `;

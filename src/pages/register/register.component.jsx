@@ -6,8 +6,6 @@ import { RegisterStyled } from './register.styles';
 
 const Register = () => (
 	<RegisterStyled>
-		Register Page
-
 		<SignIn/>
 	</RegisterStyled>
 );

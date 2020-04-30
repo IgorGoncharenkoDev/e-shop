@@ -18,7 +18,6 @@ const App = () => {
 	useEffect(() => {
 		unsubscribeFromAuth = auth.onAuthStateChanged(user => {
 			setCurrentUser(user);
-			console.log(user);
 
 			return () => {
 				unsubscribeFromAuth();
@@ -28,7 +27,7 @@ const App = () => {
 
 	return (
 		<div className="App">
-			<PageHeader/>
+			<PageHeader currentUser={ currentUser }/>
 			<Switch>
 				<Route path="/" exact component={ Home }/>
 				<Route path="/shop" exact>
