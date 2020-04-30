@@ -6,7 +6,7 @@ import Shop from './pages/shop/shop.component';
 import Register from './pages/register/register.component';
 import PageHeader from './components/page-header/page-header.component';
 
-import { auth } from './firebase/firebase.utils';
+import { auth, createUserProfileDocument } from './firebase/firebase.utils';
 
 import './App.css';
 
@@ -16,7 +16,9 @@ const App = () => {
 	let unsubscribeFromAuth = null;
 
 	useEffect(() => {
-		unsubscribeFromAuth = auth.onAuthStateChanged(user => {
+		unsubscribeFromAuth = auth.onAuthStateChanged(async user => {
+			createUserProfileDocument(user);
+
 			setCurrentUser(user);
 
 			return () => {

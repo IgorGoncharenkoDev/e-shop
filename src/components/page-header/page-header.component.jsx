@@ -22,9 +22,16 @@ const PageHeader = ({ currentUser }) => (
 			<LinkStyled to="/shop">Contact</LinkStyled>
 			{
 				currentUser ? (
-					<LinkStyled as="button" registerButton onClick={ () => auth.signOut() }>Sign Out</LinkStyled>
+					<LinkStyled
+						as="button"
+						type="register"
+						onClick={ () => auth.signOut() }
+					>Sign Out</LinkStyled>
 				) : (
-					<LinkStyled registerButton to="/register">Sign In</LinkStyled>
+					<LinkStyled
+						to="/register"
+						type="register"
+					>Sign In</LinkStyled>
 				)
 			}
 		</Options>

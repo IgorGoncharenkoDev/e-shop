@@ -44,7 +44,7 @@ export const LinkStyled = styled(Link)`
 		outline: none;
 	}
 	
-	${ ({ registerButton }) => registerButton && css`
+	${ ({ type }) => type === 'register' && css`
 		width: 82px;
 	` }
 `;

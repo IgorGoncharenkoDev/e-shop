@@ -63,7 +63,7 @@ const SignIn = () => {
 	const handleSubmit = e => {
 		e.preventDefault();
 
-		// here: send the data to the server
+		// here: send the dathea to the server
 		console.log(state.inputs);
 	};
 

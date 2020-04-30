@@ -15,6 +15,39 @@ const firebaseConfig = {
 	appId: "1:1089187938568:web:43444cb7a1bb0d6782acbd"
 };
 
+export const createUserProfileDocument = async (userAuth, additionalUserData) => {
+	if (!userAuth) return;
+
+	const userRef = firestore.doc(`users/${ userAuth.uid }`);
+	const userSnapshot = await userRef.get();
+
+	// if current user does not exist
+	if (!userSnapshot.exists) {
+		const { displayName, email } = userAuth;
+		const createdAt = new Date();
+		const newUserData = {
+			displayName,
+			email,
+			createdAt,
+			...additionalUserData
+		}
+
+		console.log('NEW USER =>', newUserData);
+
+		try {
+			await userRef.set(newUserData);
+		}
+		catch (err) {
+			console.log('Error, cannot create a new user. Check createUserProfileDocument() function', err.message);
+		}
+	}
+	// otherwise...nothing for now...
+
+	// we might want to use the User Reference Object to do other things elsewhere in the App
+	// (since the code above simply creates data for Firestore database)
+	return userRef;
+};
+
 firebase.initializeApp(firebaseConfig);
 
 export const auth = firebase.auth();
