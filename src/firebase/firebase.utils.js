@@ -32,7 +32,7 @@ export const createUserProfileDocument = async (userAuth, additionalUserData) =>
 			...additionalUserData
 		}
 
-		console.log('NEW USER =>', newUserData);
+		// console.log('NEW USER =>', newUserData);
 
 		try {
 			await userRef.set(newUserData);

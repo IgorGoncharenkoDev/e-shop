@@ -11,15 +11,38 @@ import { auth, createUserProfileDocument } from './firebase/firebase.utils';
 import './App.css';
 
 const App = () => {
-	const [currentUser, setCurrentUser] = useState({ });
+	const [currentUser, setCurrentUser] = useState({});
 
 	let unsubscribeFromAuth = null;
 
 	useEffect(() => {
-		unsubscribeFromAuth = auth.onAuthStateChanged(async user => {
-			createUserProfileDocument(user);
+		unsubscribeFromAuth = auth.onAuthStateChanged(async userAuth => {
+			setCurrentUser(userAuth);
 
-			setCurrentUser(user);
+			// checking if 'userAuth' is not 'null'
+			if (userAuth) {
+				// const userRef = firestore.doc(`users/${ userAuth.uid }`);
+				// checking if our database has been updated at that reference with any new data
+				// (if saved a new user)
+				const userRef = await createUserProfileDocument(userAuth);
+
+				// subscribing for any changes to 'userRef'
+				// getting the snapshot object representing the data currently(!) stored in our database.
+				// the snapshot object contains the data related to the user that we have just
+				// possibly stored (if it was a new authentication)
+				// or the data related to the user that is already stored in our database.
+				userRef.onSnapshot(snapshot => {
+					setCurrentUser({
+						currentUser: {
+							id: snapshot.id,
+							...snapshot.data()
+						}
+					});
+				});
+			}
+			else {
+				setCurrentUser(userAuth);
+			}
 
 			return () => {
 				unsubscribeFromAuth();
