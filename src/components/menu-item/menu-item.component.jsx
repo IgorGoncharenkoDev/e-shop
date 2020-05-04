@@ -1,5 +1,5 @@
 import React from 'react';
-import { withRouter } from 'react-router-dom';
+import { useHistory, useRouteMatch } from 'react-router-dom';
 
 import {
 	MenuItemStyled,
@@ -9,17 +9,22 @@ import {
 	MenuItemSubtitle
 } from './menu-item.styles';
 
-const MenuItem = ({ title, imageUrl, size, routeName, history, match}) => (
-	<MenuItemStyled
-		size={ size }
-		onClick={ () => history.push(`${ match.url }${ routeName }`) }
-	>
-		<MenuItemBackgroundImage style={{ backgroundImage: `url(${ imageUrl })` }} />
-		<MenuItemContent>
-			<MenuItemTitle>{ title }</MenuItemTitle>
-			<MenuItemSubtitle>Shop now</MenuItemSubtitle>
-		</MenuItemContent>
-	</MenuItemStyled>
-);
+const MenuItem = ({ title, imageUrl, size, routeName }) => {
+	const history = useHistory();
+	const match = useRouteMatch();
 
-export default withRouter(MenuItem);
+	return (
+		<MenuItemStyled
+			size={ size }
+			onClick={ () => history.push(`${ match.url }${ routeName }`) }
+		>
+			<MenuItemBackgroundImage style={{ backgroundImage: `url(${ imageUrl })` }} />
+			<MenuItemContent>
+				<MenuItemTitle>{ title }</MenuItemTitle>
+				<MenuItemSubtitle>Shop now</MenuItemSubtitle>
+			</MenuItemContent>
+		</MenuItemStyled>
+	)
+};
+
+export default MenuItem;

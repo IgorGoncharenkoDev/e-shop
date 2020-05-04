@@ -19,7 +19,7 @@ const PageHeader = ({ currentUser }) => (
 
 		<Options>
 			<LinkStyled to="/shop">Shop</LinkStyled>
-			<LinkStyled to="/shop">Contact</LinkStyled>
+			<LinkStyled to="/contact">Contact</LinkStyled>
 			{
 				currentUser ? (
 					<LinkStyled
